@@ -14,7 +14,7 @@ func Init() {
 // InitViper from file toml
 func InitViper() {
 	viper.SetConfigFile("toml")
-	viper.AddConfigPath("././envs")
+	viper.AddConfigPath("./configs")
 	viper.SetConfigName("config")
 
 	viper.AutomaticEnv()
