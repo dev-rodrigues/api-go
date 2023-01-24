@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
+	"rest-api/application/config"
 	"rest-api/routes"
 )
 
@@ -18,6 +19,7 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	cobra.OnInitialize(splash)
+	config.DbConnect()
 }
 func splash() {
 	fmt.Println(`
