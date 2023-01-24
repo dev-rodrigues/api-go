@@ -4,14 +4,16 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"log"
-	"rest-api/application/config"
 	"rest-api/routes"
+
+	"rest-api/application/config"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "GO-POSTGRESQL",
 	Short: "Using golang in postgresql",
 	Long:  `Using postgresql and some plugins`,
+
 	Run: func(cmd *cobra.Command, args []string) {
 		routes.Route()
 	},
@@ -19,7 +21,7 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	cobra.OnInitialize(splash)
-	config.DbConnect()
+	config.Init()
 }
 func splash() {
 	fmt.Println(`
