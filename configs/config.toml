@@ -1,9 +1,9 @@
 [app]
-    host            = "127.0.0.1:8002"
+    host            = "127.0.0.1:8080"
 
 [configDB]
-    host            = "127.0.0.1"
+    host            = "localhost"
     port            = 5432
     user            = "postgres"
-    password        = "password"
-    dbname          = "go-postgres"
+    password        = "Postgres2022!"
+    dbname          = "postgres"

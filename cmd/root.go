@@ -5,8 +5,6 @@ import (
 	"github.com/spf13/cobra"
 	"log"
 	"rest-api/routes"
-
-	"rest-api/application/config"
 )
 
 var rootCmd = &cobra.Command{
@@ -21,8 +19,8 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	cobra.OnInitialize(splash)
-	config.Init()
 }
+
 func splash() {
 	fmt.Println(`
 	running application            

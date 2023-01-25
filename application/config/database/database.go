@@ -3,16 +3,23 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	"github.com/spf13/viper"
 	"log"
+	"rest-api/application/config"
+
+	_ "github.com/lib/pq"
+	"github.com/spf13/viper"
 )
 
 var (
-	// DB variable for connection DB postgresql
 	DB *sql.DB
 )
 
-func DbConnect() error {
+func DbConnect() (*sql.DB, error) {
+	config.InitViper()
+	if DB != nil {
+		return DB, nil
+	}
+
 	host := viper.GetString("configDB.host")
 	port := viper.GetString("configDB.port")
 	user := viper.GetString("configDB.user")
@@ -22,15 +29,16 @@ func DbConnect() error {
 	psqlInfo := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=disable", user, password, host, port, dbname)
 	result, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	// defer result.Close()
 	err = result.Ping()
 	if err != nil {
 		log.Println("Error DB Ping : ", err)
-		return err
+		return nil, err
 	}
 
 	DB = result
-	return nil
+
+	return DB, nil
 }
