@@ -16,3 +16,15 @@ type PeopleServiceDependencies struct {
 func (s PeopleServiceDependencies) GetPeoples() ([]*domain.Person, error) {
 	return s.repository.GetPeoples()
 }
+
+func (s PeopleServiceDependencies) GetPeople(id string) (*domain.Person, error) {
+	return s.repository.GetPeople(id)
+}
+
+func (s PeopleServiceDependencies) CreatePeople(people *domain.Person) (*domain.Person, error) {
+	return s.repository.CreatePeople(people)
+}
+
+func (s PeopleServiceDependencies) DeletePeople(id string) error {
+	return s.repository.DeletePeople(id)
+}

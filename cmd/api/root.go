@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"fmt"
@@ -23,7 +23,7 @@ func init() {
 
 func splash() {
 	fmt.Println(`
-	running application            
+		running application            
   `)
 }
 

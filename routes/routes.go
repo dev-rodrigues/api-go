@@ -15,7 +15,7 @@ func Route() {
 
 	router.HandleFunc("/contact", controllers.GetPeoples).Methods("GET")
 	router.HandleFunc("/contact/{id}", controllers.GetPerson).Methods("GET")
-	router.HandleFunc("/contact/{id}", controllers.CreatePerson).Methods("POST")
+	router.HandleFunc("/contact", controllers.CreatePerson).Methods("POST")
 	router.HandleFunc("/contact/{id}", controllers.DeletePerson).Methods("DELETE")
 
 	host := fmt.Sprintf(viper.GetString("app.host"))
